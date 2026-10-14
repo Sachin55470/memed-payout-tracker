@@ -1,8 +1,8 @@
 import type { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import type { UserRole } from "@/constants";
-import { AppError } from "@/utils/AppError";
-import { ACCESS_COOKIE } from "@/utils/tokens";
+import type { UserRole } from "../constants";
+import { AppError } from "../utils/AppError";
+import { ACCESS_COOKIE } from "../utils/tokens";
 
 export function protect(req: Request, _res: Response, next: NextFunction) {
   const token = req.cookies[ACCESS_COOKIE];

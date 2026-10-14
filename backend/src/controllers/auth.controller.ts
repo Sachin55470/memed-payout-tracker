@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import { User } from "@/models/user.model";
-import { AppError } from "@/utils/AppError";
-import { sendSuccess } from "@/utils/apiResponse";
+import { User } from "../models/user.model";
+import { AppError } from "../utils/AppError";
+import { sendSuccess } from "../utils/apiResponse";
 import {
   ACCESS_COOKIE,
   REFRESH_COOKIE,
@@ -14,7 +14,7 @@ import {
   getUserIdFromRefreshToken,
   refreshCookieOptions,
   roleCookieOptions,
-} from "@/utils/tokens";
+} from "../utils/tokens";
 
 type UserInfo = { id: string; name: string; email: string; role: string };
 
@@ -65,7 +65,7 @@ export async function login(req: Request, res: Response) {
 export async function refresh(req: Request, res: Response) {
   const token = req.cookies[REFRESH_COOKIE];
   if (!token) {
-    // also clears the role cookie, so the frontend stops treating the user as logged in
+    
     clearTokens(res);
     throw new AppError(401, "Please log in");
   }

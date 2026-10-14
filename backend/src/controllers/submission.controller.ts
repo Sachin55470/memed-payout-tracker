@@ -1,12 +1,12 @@
 import type { Request, Response } from "express";
 import mongoose from "mongoose";
-import { Campaign } from "@/models/campaign.model";
-import { Submission } from "@/models/submission.model";
-import { AppError } from "@/utils/AppError";
-import { sendSuccess } from "@/utils/apiResponse";
-import { clearLiveCampaignsCache } from "@/utils/cache";
-import { calculatePayout } from "@/utils/payout";
-import { isLinkForPlatform } from "@/utils/platform";
+import { Campaign } from "../models/campaign.model";
+import { Submission } from "../models/submission.model";
+import { AppError } from "../utils/AppError";
+import { sendSuccess } from "../utils/apiResponse";
+import { clearLiveCampaignsCache } from "../utils/cache";
+import { calculatePayout } from "../utils/payout";
+import { isLinkForPlatform } from "../utils/platform";
 
 export async function createSubmission(req: Request, res: Response) {
   const { postUrl } = req.body;

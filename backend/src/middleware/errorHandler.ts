@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
-import { AppError } from "@/utils/AppError";
-import { sendError } from "@/utils/apiResponse";
+import { AppError } from "../utils/AppError";
+import { sendError } from "../utils/apiResponse";
 
 export function notFound(_req: Request, res: Response) {
   sendError(res, 404, "Route not found");

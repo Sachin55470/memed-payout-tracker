@@ -1,9 +1,9 @@
 import type { Request, Response } from "express";
-import { Campaign } from "@/models/campaign.model";
-import { Submission } from "@/models/submission.model";
-import { AppError } from "@/utils/AppError";
-import { sendSuccess } from "@/utils/apiResponse";
-import { clearLiveCampaignsCache, getCachedLiveCampaigns, setCachedLiveCampaigns } from "@/utils/cache";
+import { Campaign } from "../models/campaign.model";
+import { Submission } from "../models/submission.model";
+import { AppError } from "../utils/AppError";
+import { sendSuccess } from "../utils/apiResponse";
+import { clearLiveCampaignsCache, getCachedLiveCampaigns, setCachedLiveCampaigns } from "../utils/cache";
 
 export async function createCampaign(req: Request, res: Response) {
   const { name, platform, totalBudget, milestones } = req.body;
@@ -32,7 +32,7 @@ export async function getMyCampaigns(req: Request, res: Response) {
   sendSuccess(res, "Campaigns fetched", { campaigns: result });
 }
 
-// cached in Redis because every creator sees the same list
+
 export async function getLiveCampaigns(_req: Request, res: Response) {
   const cached = await getCachedLiveCampaigns();
   if (cached) {

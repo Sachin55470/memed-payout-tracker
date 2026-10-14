@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getMe, login, logout, refresh, signup } from "@/controllers/auth.controller";
-import { protect } from "@/middleware/auth";
-import { validate } from "@/middleware/validate";
-import { loginSchema, signupSchema } from "@/validators/auth.validator";
+import { getMe, login, logout, refresh, signup } from "../controllers/auth.controller";
+import { protect } from "../middleware/auth";
+import { validate } from "../middleware/validate";
+import { loginSchema, signupSchema } from "../validators/auth.validator";
 
 const router = Router();
 

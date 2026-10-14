@@ -1,4 +1,4 @@
-import type { UserRole } from "@/constants";
+import type { UserRole } from "../constants";
 
 declare global {
   namespace Express {

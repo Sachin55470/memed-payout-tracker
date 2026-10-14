@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import type { CookieOptions } from "express";
 import jwt from "jsonwebtoken";
-import { redis } from "@/config/redis";
+import { redis } from "../config/redis";
 
 const ACCESS_TOKEN_SECONDS = 15 * 60;
 const REFRESH_TOKEN_DAYS = 7;
@@ -47,8 +47,7 @@ export function refreshCookieOptions(): CookieOptions {
   return { ...baseCookieOptions(), path: "/api/auth", maxAge: REFRESH_TOKEN_SECONDS * 1000 };
 }
 
-// Not a secret. The frontend proxy reads it to decide which page to show.
-// It lives as long as the refresh token. The API never trusts it.
+
 export function roleCookieOptions(): CookieOptions {
   return { ...baseCookieOptions(), path: "/", maxAge: REFRESH_TOKEN_SECONDS * 1000 };
 }

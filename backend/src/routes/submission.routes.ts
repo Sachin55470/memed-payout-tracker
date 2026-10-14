@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { updateViews } from "@/controllers/submission.controller";
-import { validate } from "@/middleware/validate";
-import { updateViewsSchema } from "@/validators/submission.validator";
+import { updateViews } from "../controllers/submission.controller";
+import { validate } from "../middleware/validate";
+import { updateViewsSchema } from "../validators/submission.validator";
 
 const router = Router();
 

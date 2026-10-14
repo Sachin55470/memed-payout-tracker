@@ -4,12 +4,13 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
+import { connectDatabases } from "./config/connect";
 import { errorHandler, notFound } from "./middleware/errorHandler";
 import routes from "./routes";
 
 const app = express();
 
-// Render/Vercel sit behind a proxy; needed so rate limiting sees the real client IP
+// Vercel sit behind a proxy; needed so rate limiting sees the real client IP
 app.set("trust proxy", 1);
 
 const apiLimiter = rateLimit({
@@ -26,6 +27,17 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", apiLimiter);
+
+
+app.get("/health", (_req, res) => {
+  res.json({ status: "ok" });
+});
+
+
+app.use("/api", async (_req, _res, next) => {
+  await connectDatabases();
+  next();
+});
 
 app.use("/api", routes);
 

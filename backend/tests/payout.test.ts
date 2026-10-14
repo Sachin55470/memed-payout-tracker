@@ -1,4 +1,4 @@
-import { calculatePayout, getMilestonePayout } from "@/utils/payout";
+import { calculatePayout, getMilestonePayout } from "../src/utils/payout";
 
 const milestones = [
   { views: 10000, payout: 500 },
@@ -59,7 +59,6 @@ describe("budget cap", () => {
   });
 
   it("caps the difference payout too", () => {
-    // owed 4500 more (5000 - 500) but only 1000 left
     expect(calculatePayout(100000, milestones, 500, 1000)).toBe(1000);
   });
 

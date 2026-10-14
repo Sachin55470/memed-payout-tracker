@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { PLATFORMS } from "@/constants";
+import { PLATFORMS } from "../constants";
 
 const milestoneSchema = new Schema(
   {
