@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
+import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import { errorHandler, notFound } from "./middleware/errorHandler";
 import routes from "./routes";
@@ -18,6 +19,8 @@ const apiLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+
+app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
