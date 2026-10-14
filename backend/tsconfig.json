@@ -5,9 +5,9 @@
     "outDir": "./dist",
 
     // Environment Settings
-    // With no "type": "module" in package.json, nodenext emits CommonJS
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "target": "es2022",
     "lib": ["es2022"],
     "types": ["node", "jest"],
