@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { PLATFORMS } from "@/constants";
 
 const milestoneSchema = z.object({
   views: z.number().int().positive(),
@@ -19,7 +18,7 @@ function isLadderValid(milestones: { views: number; payout: number }[]) {
 
 export const createCampaignSchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
-  platform: z.enum(PLATFORMS),
+  platform: z.enum(["instagram", "youtube"]),
   totalBudget: z.number().int().positive(),
   milestones: z
     .array(milestoneSchema)

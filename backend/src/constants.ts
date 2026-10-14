@@ -1,5 +1,4 @@
-export const USER_ROLES = ["brand", "creator"] as const;
-export const PLATFORMS = ["instagram", "youtube"] as const;
+export const USER_ROLES = ["brand", "creator"];
+export const PLATFORMS = ["instagram", "youtube"];
 
 export type UserRole = "brand" | "creator";
-export type Platform = "instagram" | "youtube";
